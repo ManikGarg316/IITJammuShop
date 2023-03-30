@@ -17,29 +17,24 @@ import 'swiper/css/scrollbar';
 
 SwiperCore.use([Keyboard, Scrollbar, Pagination, Navigation])
 
-const Product = ({ product }) => {
+const Product = ({ product, productImages }) => {
     const classes = useStyles();
 
     return (
     <Card className={classes.root}>
-        <CardMedia className={classes.media} image={product.image} />
-        {/* <Swiper
+        <Swiper
             grabCursor
             keyboard={{ enabled: true }}
             pagination={{ clickable: true }}
             navigation
             loop
             className={classes.swiperContainer} >
-                    <SwiperSlide key={0}>
-                        <CardMedia className={classes.media} image={productImage} />
+                {productImages?.map((image, index) => (
+                    <SwiperSlide key={index}>
+                        <CardMedia className={classes.media} image={image} />
                     </SwiperSlide>
-                    <SwiperSlide key={1}>
-                        <CardMedia className={classes.media} image={productImage} />
-                    </SwiperSlide>
-                    <SwiperSlide key={2}>
-                        <CardMedia className={classes.media} image={productImage} />
-                    </SwiperSlide>
-        </Swiper> */}
+                ))}
+        </Swiper>
         <CardContent>
             <div className={classes.cardContent}>
                 <Typography variant="h5" gutterBottom>
