@@ -14,22 +14,22 @@ return (
 	<Nav>
 		<Bars/>
 		<NavMenu>
-			<NavLink to='/home' activeStyle><a href="" className="logo"><img style={{ width: "48%", height: "60%" }} className="logo" src={storeLogo} alt="IIT Jammu logo"/></a>
+			<NavLink to='/home'><a href="" className="logo"><img style={{ width: "48%", height: "60%" }} className="logo" src={storeLogo} alt="IIT Jammu logo"/></a>
 			</NavLink>
 			<Nav className="me-auto">
     		</Nav>
 			<Nav className="me-auto">
     		</Nav>
-			<NavLink to='/addItem' activeStyle>
+			<NavLink to='/addItem'>
 				<IconButton>
 					<AddIcon sx={{ color: "white"}}/>
 				</IconButton>
 				
 			</NavLink>
-			<NavLink to='/store' activeStyle>
+			<NavLink to='/store'>
 				Store
 			</NavLink>
-			<NavLink to='/about' activeStyle>
+			<NavLink to='/about'>
 				About
 			</NavLink>
 		</NavMenu>

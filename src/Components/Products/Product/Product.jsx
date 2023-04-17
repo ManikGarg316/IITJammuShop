@@ -38,14 +38,14 @@ const Product = ({ product, productImages }) => {
         <CardContent>
             <div className={classes.cardContent}>
                 <Typography variant="h5" gutterBottom>
-                    {product.name}
+                    {product.product_name}
                 </Typography>
                 <Typography variant="h5">
-                    {product.price}
+                    {product.product_price}
                 </Typography>
             </div>
             <Typography variant="body2" color="textSecondary">
-                {product.description}
+                {product.desc}
             </Typography>
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
