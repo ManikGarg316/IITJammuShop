@@ -17,6 +17,7 @@ const MyForm = () => {
 		temp_form["image_urls"] = urls;
 		setForm(temp_form);
 		if(images.length > 0 && images.length === urls.length){
+			form["product_price"] = "₹" + form["product_price"];
 			form["hash"] = sha256(JSON.stringify(form));
 			alert("Here is the key to delete this product\n ")
 			projectFirestore.collection("Products").add(form);
