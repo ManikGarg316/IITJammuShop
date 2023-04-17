@@ -8,24 +8,28 @@ import About from './pages/about';
 import Store from './pages/store';
 import AddItem from './pages/addItem';
 import { AnimatePresence } from 'framer-motion';
+import MyItems from './pages/myItems';
 
 const Animated = () => {
     const location = useLocation();
     return (
         <>
-        <AnimatePresence mode="wait">
-  <Routes>
-  <Route path='/' exact element ={<Home/>}></Route>
-<Route path='/home' exact element ={<Home/>}></Route>
+            <AnimatePresence mode="wait">
+                <Routes>
+                    <Route path='/' exact element ={<Home/>}></Route>
 
-<Route path='/about' element ={<About/>}></Route>
+                    <Route path='/home' exact element ={<Home/>}></Route>
 
-<Route path='/store' element ={<Store/>}></Route>
+                    <Route path='/about' element ={<About/>}></Route>
 
-<Route path='/addItem' element ={<AddItem/>}></Route>
+                    <Route path='/store' element ={<Store/>}></Route>
 
-</Routes>
-        </AnimatePresence></>
+                    <Route path='/addItem' element ={<AddItem/>}></Route>
+
+                    <Route path='/myItems' element = {<MyItems/>}></Route>
+                </Routes>
+            </AnimatePresence>
+        </>
     )
 }
 

@@ -7,6 +7,8 @@ NavMenu,
 } from './NavbarElements';
 import storeLogo from "../../assets/site-logo2.png"
 import AddIcon from '@mui/icons-material/Add';
+import StoreIcon from '@mui/icons-material/Store';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 import IconButton from '@mui/material/IconButton';
 const Navbar = () => {
 return (
@@ -27,7 +29,14 @@ return (
 				
 			</NavLink>
 			<NavLink to='/store'>
-				Store
+				<IconButton>
+					<StoreIcon sx={{ color: "white"}}/>
+				</IconButton>
+			</NavLink>
+			<NavLink to='/myItems'>
+				<IconButton>
+					<LocalMallIcon sx={{ color: "white"}}/>
+				</IconButton>
 			</NavLink>
 			<NavLink to='/about'>
 				About
