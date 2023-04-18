@@ -49,6 +49,13 @@ const Product = ({ product, productImages }) => {
             </Typography>
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
+            <Typography variant="h7">
+                    Contact Me:
+                    {product.contact_number}
+            </Typography>
+            <Typography variant="h7">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </Typography>
             <IconButton aria-label="Delete the product from store">
                 <DeleteIcon />
             </IconButton>

@@ -19,7 +19,8 @@ const MyForm = () => {
 		if(images.length > 0 && images.length === urls.length){
 			form["product_price"] = "₹" + form["product_price"];
 			form["hash"] = sha256(JSON.stringify(form));
-			alert("Here is the key to delete this product\n ")
+			console.log(form);
+			// alert("Here is the key to delete this product\n ")
 			projectFirestore.collection("Products").add(form);
 		}
 	}, [urls, form]);
@@ -89,7 +90,6 @@ const MyForm = () => {
 		}
 		e.preventDefault();
 	};
-	console.log(form);
 	return (
 		<Transitions>
 		<div className="Myform">
