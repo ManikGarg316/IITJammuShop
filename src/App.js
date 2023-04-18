@@ -7,8 +7,8 @@ import Home from './pages/home';
 import About from './pages/about';
 import Store from './pages/store';
 import AddItem from './pages/addItem';
-import { AnimatePresence } from 'framer-motion';
 import MyItems from './pages/myItems';
+import { AnimatePresence } from 'framer-motion';
 
 const Animated = () => {
     const location = useLocation();
@@ -34,16 +34,16 @@ const Animated = () => {
 }
 
 function App() {
-return (
-    <div className="App">
-            <>
-                <Router>
-                    <Navbar />
-                    <Animated />
-                </Router>
-            </>
-    </div>
-);
+    return (
+        <div className="App">
+                <>
+                    <Router>
+                        <Navbar />
+                        <Animated />
+                    </Router>
+                </>
+        </div>
+    );
 }
 
 export default App;

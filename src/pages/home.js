@@ -1,7 +1,10 @@
 import React from 'react';
-import Transitions from '../Transition'
+import Transitions from '../Transition';
+// import jwt_decode from 'jwt-decode';
+// import { useEffect } from 'react';
 // import GoogleLogin from 'react-google-login';
 // import { useState } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
 
 const Home = () => {
 	// const [loginData, setLoginData] = useState(
@@ -35,12 +38,20 @@ const Home = () => {
 	// 	setLoginData(null);
 	// }
 
+
 	return (
 	<>
 		<Transitions>
-		<div>
+		{/* <div>
 		<h1>This is the official shop of IIT Jammu</h1>
-		</div>
+		</div> */}
+		<GoogleLogin
+  			        onSuccess={(credentialResponse) => {
+    			        console.log(credentialResponse);
+  			        }}
+  			        onError={() => {
+    			        console.log('Login Failed');
+  			        }}/>
 		</Transitions>
 		{/* <div>
 			{loginData ? (
