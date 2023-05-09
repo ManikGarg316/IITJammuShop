@@ -14,3 +14,10 @@ justify-content: center;
 font-size: calc(10px + 1Vmin);
 color: black;
 }
+
+.background{
+    height: 100vh;
+    width: 100vw;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(255,190,86,255) 0%, rgba(255,177,79,255) 50%, rgba(253,136,22,255) 100%);
+}

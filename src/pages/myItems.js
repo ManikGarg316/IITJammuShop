@@ -1,17 +1,25 @@
 import React from 'react';
 import Transitions from '../Transition';
-
-const MyItems = () => {
-
-	return (
-	<>
+import { Grid } from '@material-ui/core';
+import Product from '../Components/Products/Product/Product';
+const MyItems = ({products, LoggedInEmail}) => 
+{	
+	// console.log(LoggedInEmail);
+	
+	return (	
 		<Transitions>
-		<div>
-		<h1>This is where user can view and delete his products.</h1>
-		</div>
+			<main>
+				<Grid container justifyContent="center" spacing={4}>
+					{products.map((product) => (
+						product.email === LoggedInEmail ?
+							(<Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+								<Product product={product} productImages={product.image_urls} requireDelete={true}/>
+							</Grid>) : null
+					))}
+				</Grid>
+			</main>
 		</Transitions>
-	</>
-	);
-};
+    );
+}
 
 export default MyItems;

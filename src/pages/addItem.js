@@ -1,27 +1,31 @@
 import Transitions from '../Transition'
 import React, {useState, useEffect} from 'react';
 import './addItem.css';
-import {sha256} from 'js-sha256';
+// import {sha256} from 'js-sha256';
 // import MultiImageInput from 'react-multiple-image-input';
 import {projectStorage, projectFirestore} from '../firebase/config';
-const MyForm = () => {
+import { useNavigate } from 'react-router-dom';
+const MyForm = (loggedEmail) => {
 
 	const [images, setImages] = useState([]);
 	const [urls, setUrls] = useState([]);
 	const [progress, setProgress] = useState(0);
 	const [form, setForm] = useState({});
 
-
+	var navigate = useNavigate();
 	useEffect(() => {
 		let temp_form = form;
 		temp_form["image_urls"] = urls;
 		setForm(temp_form);
 		if(images.length > 0 && images.length === urls.length){
 			form["product_price"] = "₹" + form["product_price"];
-			form["hash"] = sha256(JSON.stringify(form));
+			form["email"] = loggedEmail.loggedEmail;
+			// form["hash"] = sha256(JSON.stringify(form));
 			console.log(form);
 			// alert("Here is the key to delete this product\n ")
 			projectFirestore.collection("Products").add(form);
+			// navigate("/home");
+			// window.location.reload();
 		}
 	}, [urls, form]);
 
@@ -92,36 +96,38 @@ const MyForm = () => {
 	};
 	return (
 		<Transitions>
-		<div className="Myform">
-		<header className="Myform-header">
-		<form onSubmit={(e) => {handleSubmit(e)}}>
-		<h2> IIT Jammu Shop </h2>
-		<h3> Item Addition Form </h3>
-		<h4> Fill out the details for your product.</h4>
-			<label >
-			Product Name:
-			</label><br/>
-			<input type="text" required name="product_name" onChange={(e) => {handleForm(e)}} /><br/>
-			<br/>
-			<label >
-			Price(in rupees):
-			</label><br/>
-			<input type="number" required name="product_price" onChange={(e) => {handleForm(e)}} /><br/>
-			<br/>
-			<label>
-			Description:
-			</label><br/>
-			<input type="text" required name="desc" onChange={(e) => {handleForm(e)}} /><br/>
-			<br/>
-			<label>
-			Contact No.:
-			</label><br/>
-			<input type="tel" required name="contact_number" maxLength="10" onChange={(e) => {handleForm(e)}} /><br/>
-			<br/>
-			<input type="file" multiple required onChange={(e) => {handleImageChange(e)}} accept="image/*"/><br />
-			<input type="submit" value="SUBMIT"/>
-		</form>
-		</header>
+		<div className='background'>
+			<div className="Myform">
+			<header className="Myform-header">
+			<form onSubmit={(e) => {handleSubmit(e)}}>
+			<h2> IIT Jammu Shop </h2>
+			<h3> Item Addition Form </h3>
+			<h4> Fill out the details for your product.</h4>
+				<label >
+				Product Name:
+				</label><br/>
+				<input type="text" required name="product_name" onChange={(e) => {handleForm(e)}} /><br/>
+				<br/>
+				<label >
+				Price(in rupees):
+				</label><br/>
+				<input type="number" required name="product_price" onChange={(e) => {handleForm(e)}} /><br/>
+				<br/>
+				<label>
+				Description:
+				</label><br/>
+				<input type="text" required name="desc" onChange={(e) => {handleForm(e)}} /><br/>
+				<br/>
+				<label>
+				Contact No.:
+				</label><br/>
+				<input type="tel" required name="contact_number" maxLength="10" onChange={(e) => {handleForm(e)}} /><br/>
+				<br/>
+				<input type="file" multiple required onChange={(e) => {handleImageChange(e)}} accept="image/*"/><br />
+				<input type="submit" value="SUBMIT"/>
+			</form>
+			</header>
+			</div>
 		</div>
 		</Transitions>
 	);

@@ -14,12 +14,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import {projectFirestore} from '../../../firebase/config';
+import { useNavigate } from 'react-router-dom';
 
 SwiperCore.use([Keyboard, Scrollbar, Pagination, Navigation])
 
-const Product = ({ product, productImages }) => {
+const Product = ({ product, productImages, requireDelete }) => {
     const classes = useStyles();
-
+    const navigate = useNavigate();
+    const DeleteItem = async () => {
+        await projectFirestore.collection('Products').doc(product.id).delete();
+        localStorage.setItem("PRODS_STATE", "Change");
+        navigate("/home");
+        window.location.reload();
+    }
     return (
     <Card className={classes.root}>
         <Swiper
@@ -50,15 +58,17 @@ const Product = ({ product, productImages }) => {
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
             <Typography variant="h7">
-                    Contact Me:
+                    Contact Me:&nbsp;
                     {product.contact_number}
             </Typography>
-            <Typography variant="h7">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Typography variant={requireDelete ? "h4": "h5"}>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </Typography>
-            <IconButton aria-label="Delete the product from store">
-                <DeleteIcon />
-            </IconButton>
+            {requireDelete ?
+                <IconButton aria-label="Delete the product from store">
+                    <DeleteIcon onClick={DeleteItem}/>
+                </IconButton>
+                : null}
         </CardActions>
     </Card>
   )

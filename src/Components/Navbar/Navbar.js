@@ -6,9 +6,7 @@ Bars,
 NavMenu,
 } from './NavbarElements';
 import storeLogo from "../../assets/site-logo2.png"
-import AddIcon from '@mui/icons-material/Add';
-import StoreIcon from '@mui/icons-material/Store';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+import {Add, Store, LocalMall, Info} from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 const Navbar = () => {
 return (
@@ -23,24 +21,27 @@ return (
 			<Nav className="me-auto">
     		</Nav>
 			<NavLink to='/addItem'>
-				<IconButton>
-					<AddIcon sx={{ color: "white"}}/>
+				<IconButton title="Add item to store">
+					<Add sx={{ color: "white"}}/>
 				</IconButton>
 				
 			</NavLink>
 			<NavLink to='/store'>
-				<IconButton>
-					<StoreIcon sx={{ color: "white"}}/>
+				<IconButton title="Store">
+					<Store sx={{ color: "white"}}/>
 				</IconButton>
 			</NavLink>
 			<NavLink to='/myItems'>
-				<IconButton>
-					<LocalMallIcon sx={{ color: "white"}}/>
+				<IconButton title="My Items">
+					<LocalMall sx={{ color: "white"}}/>
 				</IconButton>
 			</NavLink>
 			<NavLink to='/about'>
-				About
+				<IconButton title="About">
+					<Info sx={{ color: "white"}}/>
+				</IconButton>
 			</NavLink>
+			
 		</NavMenu>
 	</Nav>
 	</>
